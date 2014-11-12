@@ -9,7 +9,7 @@ import org.openxava.annotations.*;
 public class Modelo extends Identificable {
 	
 	@Required
-	@Column(length=24)
+	@Column(length=24, unique=true)
 	private String nombre;
 	
 	@Required

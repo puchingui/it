@@ -11,8 +11,11 @@ import org.openxava.annotations.*;
 public class Marca extends Identificable {
 	
 	@Required
-	@Column(length=24)
+	@Column(length=24, unique=true)
 	private String nombre;
+	
+	@ManyToMany
+	private Collection<Categoria> categorias;
 	
 	@Stereotype("PHOTO")
 	private byte[] logo;
@@ -29,6 +32,14 @@ public class Marca extends Identificable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public Collection<Categoria> getCategorias() {
+		return categorias;
+	}
+	
+	public void setCategorias(Collection<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 
 	public byte[] getLogo() {

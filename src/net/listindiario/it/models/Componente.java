@@ -25,7 +25,10 @@ public class Componente extends Identificable {
 	private Categoria categoria;
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@DescriptionsList
+	@DescriptionsList(
+			descriptionProperties="nombre",
+			depends="this.categoria",
+			condition="${categoria.oid} = ?")
 	private Marca marca;
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)

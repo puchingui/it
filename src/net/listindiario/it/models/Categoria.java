@@ -17,6 +17,10 @@ public class Categoria extends Identificable {
 	@OneToMany(mappedBy="categoria")
 	private Collection<Componente> conponentes;
 	
+	@ManyToMany(mappedBy="categorias")
+	@ListAction("ManyToMany.new")
+	private Collection<Marca> marcas;
+	
 	/******************************************/
 
 	public String getNombre() {
@@ -33,6 +37,14 @@ public class Categoria extends Identificable {
 
 	public void setConponentes(Collection<Componente> conponentes) {
 		this.conponentes = conponentes;
+	}
+
+	public Collection<Marca> getMarcas() {
+		return marcas;
+	}
+
+	public void setMarcas(Collection<Marca> marcas) {
+		this.marcas = marcas;
 	}
 
 }
