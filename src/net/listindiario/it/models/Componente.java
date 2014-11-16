@@ -9,9 +9,13 @@ import org.openxava.annotations.*;
 @View(members="Datos {serial; "
 		+ "categoria; "
 		+ "marca; "
-		+ "modelo; "
+		+ "modelo;"
+		+ "procesador;"
+		+ "memoria;"
+		+ "almacenamiento; "
 		+ "observacion};"
-		+ "Foto {foto}")
+		+ "Foto {foto};"
+		+ "Equipo {equipo}")
 public class Componente extends Identificable {
 
 	@ManyToOne
@@ -40,6 +44,21 @@ public class Componente extends Identificable {
 	
 	@Stereotype("MEMO")
 	private String observacion;
+	
+	@ManyToOne
+	@DescriptionsList
+	private Procesador procesador;
+	
+	@ManyToOne
+	@DescriptionsList
+	private Memoria memoria;
+	
+	@ManyToOne
+	@DescriptionsList
+	private Almacenamiento almacenamiento;
+	
+	
+	/**************************************/
 
 	public String getSerial() {
 		return serial;
@@ -95,5 +114,29 @@ public class Componente extends Identificable {
 
 	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
+	}
+
+	public Procesador getProcesador() {
+		return procesador;
+	}
+
+	public void setProcesador(Procesador procesador) {
+		this.procesador = procesador;
+	}
+
+	public Memoria getMemoria() {
+		return memoria;
+	}
+
+	public void setMemoria(Memoria memoria) {
+		this.memoria = memoria;
+	}
+
+	public Almacenamiento getAlmacenamiento() {
+		return almacenamiento;
+	}
+
+	public void setAlmacenamiento(Almacenamiento almacenamiento) {
+		this.almacenamiento = almacenamiento;
 	}
 }
